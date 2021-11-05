@@ -29,15 +29,25 @@
 % Please email me if you find bugs, or have suggestions or questions! 
  
 function D = DistEuclideanPiotrDollar( X, Y )
-    if( ~isa(X,'double') || ~isa(Y,'double'))
-%         disp( 'Inputs must be of type double - converting...');
-        X = double(X); Y=double(Y);
+    if nargin < 2
+        if( ~isa(X,'double'))
+            X = double(X);
+        end
+        m = size(X,1);   
+        XX = sum(X.*X,2);             
+        D = 2*(XX(:,ones(1,m)) - X*X');
+    else
+        if( ~isa(X,'double') || ~isa(Y,'double'))
+    %         disp( 'Inputs must be of type double - converting...');
+            X = double(X); Y=double(Y);
+        end
+        m = size(X,1); n = size(Y,1);  
+        Yt = Y';  
+        XX = sum(X.*X,2);        
+        YY = sum(Yt.*Yt,1);      
+        D = XX(:,ones(1,n)) + YY(ones(1,m),:) - 2*X*Yt;
     end
-    m = size(X,1); n = size(Y,1);  
-    Yt = Y';  
-    XX = sum(X.*X,2);        
-    YY = sum(Yt.*Yt,1);      
-    D = XX(:,ones(1,n)) + YY(ones(1,m),:) - 2*X*Yt;
+end
     
     
     
