@@ -26,5 +26,5 @@ Graph Construction from Data using Non Negative Kernel regression (NNK Graphs)](
 Update Nov, 2021
 
 ## Approximate NNK neighbors
-- Solves a batched iterative version of NNK optimization for data points using `knnsearch` function and `pagemtimes` functions.     
+- Solves a batched iterative version of NNK optimization for data points using `knnsearch` and `pagemtimes` functions.     
 - The test demo file provides an example of how the code can be used with feature vectors using a normalized cosine kernel (range in [0,1])  or Gaussian kernel similarity metric.
